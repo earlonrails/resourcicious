@@ -1,0 +1,38 @@
+{
+  "name": "active-resource",
+  "version": "0.0.1",
+  "description": "A wrapper around request, which intends to be ActiveResource in javascript.",
+  "author": {
+    "name": "Kevin Krauss",
+    "email": "earlkrauss@gmail.com"
+  },
+  "repository": "earlonrails/active-resource",
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "active-resource",
+    "request",
+    "ActiveResource",
+    "rails",
+    "rest"
+  ],
+  "dependencies": {
+    "request": "~2.51.0"
+  },
+  "devDependencies": {
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-cli": "^1.11.0",
+    "jshint-stylish": "^1.0.0",
+    "load-grunt-tasks": "^1.0.0",
+    "lodash": "^2.4.1",
+    "time-grunt": "^1.0.0"
+  },
+  "scripts": {
+    "test": "grunt"
+  }
+}
