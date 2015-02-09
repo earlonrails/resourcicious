@@ -5,26 +5,46 @@ var resource = {
   site: "http://api.people.com:3000/",
   singular: "resource",
   path: "resource/",
-};
 
-resource.find = function (id) {
-  return request.get(resource.site + resource.path + id + ".json");
-};
+  all: function (options, callback) {
+    return request.get(
+      this.site + this.singular + ".json",
+      options || {},
+      callback || function(){}
+    );
+  },
 
-resource.create = function (attributes) {
-  var postData = {};
-  postData[resource.singular] = attributes;
-  return request.post(resource.site + resource.path, postData);
-};
+  find: function (id, options, callback) {
+    return request.get(
+      this.site + this.path + id + ".json",
+      options || {},
+      callback || function(){}
+    );
+  },
 
-resource.update = function (attributes) {
-  var putData = {};
-  putData[resource.singular] = attributes;
-  return request.put(resource.site + resource.path, putData);
-};
+  create: function (attributes, options) {
+    var postData = options || {};
+    postData["url"] = this.site + this.path
+    postData["form"] = {};
+    postData.form[this.singular] = attributes;
+    return request.post(postData);
+  },
 
-resource.delete = function (id) {
-  return request.del(resource.site + resource.path + id + ".json");
+  update: function (attributes) {
+    var putData = attributes || {};
+    putData["url"] = this.site + this.path
+    putData["form"] = {};
+    putData.form[this.singular] = attributes;
+    return request.put(putData);
+  },
+
+  remove: function (id, options, callback) {
+    return request.del(
+      this.site + this.path + id + ".json",
+      options || {},
+      callback || function(){}
+    );
+  }
 };
 
 module.exports = resource;
